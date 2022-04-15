@@ -1,0 +1,55 @@
+/** @format */
+
+.profileContainer {
+  width: 100%;
+  height: 90vh;
+  margin: auto;
+  background-color: var(--light-bg-color);
+  padding-top: 150px;
+}
+
+.innerContainer {
+  background-color: var(--white-color);
+  padding: 30px;
+  width: 90vw;
+  margin: auto;
+  max-width: 450px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.innerContainer h1 {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 24px;
+}
+
+.profileRow {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+.profileRow b {
+  font-weight: 600;
+}
+
+.innerContainer input {
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 10px 15px;
+  font-size: 15px;
+}
+
+.innerContainer button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  background-color: var(--secondary-bg-color);
+  color: var(--white-color);
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+}

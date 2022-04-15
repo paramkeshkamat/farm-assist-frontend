@@ -1,0 +1,144 @@
+/** @format */
+
+.navContainer {
+  width: 100%;
+  height: 90px;
+  background: transparent;
+  position: fixed;
+  left: 0;
+  top: 0;
+  transition: all 0.25s ease;
+  z-index: 999;
+}
+
+.hamburger {
+  display: none;
+}
+
+.smallnav {
+  height: 65px;
+  background-color: var(--white-color) !important;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px !important;
+}
+
+.navbar {
+  width: 90vw;
+  max-width: 1267px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  background: transparent;
+  z-index: 999;
+}
+
+.navbar svg {
+  font-size: 22px;
+}
+
+.navbar a {
+  margin-left: 30px;
+  color: var(--primary-text-color);
+  transition: all 0.1s linear;
+}
+.navbar a:hover {
+  color: var(--active-link-color);
+}
+
+.logoContainer a {
+  display: inline-block;
+  text-align: left;
+  margin-left: 0;
+}
+.logoContainer h3 {
+  line-height: 1;
+}
+
+.logoContainer span {
+  font-size: 25px;
+}
+
+.social svg {
+  color: #112433;
+}
+
+.signinButton {
+  color: var(--white-color);
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+  padding: 12px 20px;
+  transform: perspective(1px) translateZ(0px);
+  transition: 0.3s;
+  vertical-align: middle;
+  background: var(--secondary-bg-color);
+  border-radius: 0;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 0.75px;
+}
+
+@media (max-width: 768px) {
+  .navContainer {
+    height: 80px;
+  }
+
+  .navLinks {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    margin: 0;
+    transform: translateY(-180%);
+    transition: all 0.8s ease-in-out;
+    z-index: -1;
+    font-size: 18px;
+    padding: 20px 0;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+  }
+
+  .showNavbar {
+    transform: translateY(0%);
+  }
+
+  .navLinks a {
+    margin: 10px 20px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 0 10px 10px 10px;
+    transition: all 0.2s linear;
+  }
+
+  .navbar {
+    flex-direction: column;
+  }
+
+  .logo img {
+    transform: scale();
+  }
+
+  .hamburger {
+    display: block;
+    display: grid;
+    place-items: center;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    outline: none;
+    color: var(--secondary-bg-color);
+  }
+
+  .hamburger svg {
+    font-size: 25px;
+  }
+
+  .logoContainer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    z-index: 999;
+    margin-top: 5px;
+  }
+}
