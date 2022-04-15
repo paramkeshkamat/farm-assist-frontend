@@ -1,0 +1,32 @@
+/** @format */
+
+.errorPageContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 150px;
+  margin-bottom: 150px;
+}
+
+.errorPageContainer h1 {
+  color: var(--primary-text-color);
+  font-size: 35px;
+}
+
+.errorPageContainer button {
+  color: var(--white-color);
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+  padding: 12px 20px;
+  transform: perspective(1px) translateZ(0px);
+  transition: 0.3s;
+  vertical-align: middle;
+  background: var(--secondary-bg-color);
+  border-radius: 0;
+  border: none;
+  letter-spacing: 0.75px;
+  margin-top: 20px;
+}

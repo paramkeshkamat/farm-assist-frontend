@@ -5,6 +5,7 @@ export default function aboutUs() {
   return (
     <div>
       <Banner title="About Us" />
+      {/* <About /> */}
     </div>
   );
 }

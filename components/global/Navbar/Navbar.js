@@ -7,7 +7,7 @@ import { FaBars } from "react-icons/fa";
 import { RiUser3Fill, RiShoppingCart2Fill } from "react-icons/ri";
 import styles from "./Navbar.module.css";
 
-const pagesWithBoxshadow = ["/signin", "/register", "/cart", "/profile"];
+const pagesWithBoxshadow = ["/signin", "/register", "/cart", "/profile", "/*"];
 
 export default function Navbar() {
   const [showNavbar, setShowNavbar] = useState(false);

@@ -1,13 +1,6 @@
 /** @format */
 
-.registerContainer {
-  width: 100%;
-  height: 100vh;
-  margin: auto;
-}
-
-.innerContainer {
-  /* background-color: var(--white-color); */
+.container {
   padding: 40px 60px;
   width: 90vw;
   margin: 100px auto;
@@ -18,11 +11,12 @@
   background-position: center center;
 }
 
-.innerContainer h2 {
+.container h2 {
   text-align: center;
   font-size: 30px;
   font-weight: 500;
   margin-bottom: 35px;
+  color: var(--primary-text-color);
 }
 
 .inputField {
@@ -34,8 +28,8 @@
   margin-bottom: 25px;
 }
 
-.innerContainer input,
-.innerContainer textarea {
+.container input,
+.container textarea {
   width: 100%;
   border: none;
   outline: none;
@@ -43,12 +37,12 @@
   font-size: 15px;
 }
 
-.innerContainer textarea {
+.container textarea {
   resize: vertical;
   height: 150px;
 }
 
-.innerContainer button {
+.container button {
   padding: 20px 60px;
   border: none;
   background-color: var(--secondary-bg-color);

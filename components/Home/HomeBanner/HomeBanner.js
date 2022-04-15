@@ -14,7 +14,7 @@ export default function HomeBanner() {
           <button onClick={() => router.push("/shop")}>Shop Now</button>
         </div>
         <div className={styles.rightContainer}>
-          <Image src="/vegetables.png" alt="banner" width={640} height={430} />
+          <Image src="/vegetables/vegetables.png" alt="banner" width={640} height={430} />
         </div>
       </div>
     </div>

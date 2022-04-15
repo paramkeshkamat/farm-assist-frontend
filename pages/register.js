@@ -4,11 +4,11 @@ import { useState, useContext } from "react";
 import { useRouter } from "next/router";
 import { AppContext } from "../context/AppContext";
 import axios from "../helpers/axios";
+import { availablePinCodes } from "../data/pincodes";
 import styles from "../styles/Register.module.css";
 
 const emailRegex = new RegExp("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,5}$");
 const pincodeRegex = new RegExp("^[1-9][0-9]{5}$");
-const availablePinCodes = ["400076", "400070", "40037"];
 
 export default function Register() {
   const [name, setName] = useState("");
@@ -146,7 +146,7 @@ export default function Register() {
                 value={city}
                 onChange={(e) => setCity(e.target.value)}
                 type="text"
-                placeholder="City*"
+                placeholder="City/Town/District*"
               />
             </div>
             <div className={styles.inputField}>
