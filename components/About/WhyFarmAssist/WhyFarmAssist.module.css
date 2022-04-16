@@ -1,0 +1,50 @@
+/** @format */
+
+.container {
+  background-color: var(--secondary-light-bg-color);
+  padding: 70px 0 100px 0;
+}
+
+.innerContainer {
+  width: 90vw;
+  max-width: 1168px;
+  margin: 0 auto;
+}
+
+.innerContainer h2 {
+  text-align: center;
+  font-size: 40px;
+  color: var(--primary-text-color);
+  margin-bottom: 50px;
+}
+
+.cardContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 40px;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+.card {
+  background-color: var(--white-color);
+  padding: 50px 30px;
+  text-align: center;
+  cursor: default;
+  transition: transform 0.2s linear;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  background-image: url("/doodles/4.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.card h3 {
+  margin-top: 30px;
+  margin-bottom: 20px;
+  font-size: 30px;
+  font-weight: 600;
+  color: var(--primary-text-color);
+}

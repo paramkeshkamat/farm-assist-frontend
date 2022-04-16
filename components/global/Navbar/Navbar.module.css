@@ -43,9 +43,9 @@
   color: var(--primary-text-color);
   transition: all 0.1s linear;
 }
-.navbar a:hover {
+/* .navbar a:hover {
   color: var(--active-link-color);
-}
+} */
 
 .logoContainer a {
   display: inline-block;

@@ -22,24 +22,24 @@
 }
 
 .rightContainer {
-  margin-left: 60px;
+  margin-left: 100px;
 }
 
 .rightContainer .bgImage {
   position: absolute;
-  top: -20px;
+  top: -40px;
   right: 100px;
 }
 
 .rightContainer .bgImage2 {
   position: absolute;
-  bottom: 0px;
-  left: 730px;
+  bottom: -20px;
+  left: 750px;
 }
 
 .rightContainer .bgImage3 {
   position: absolute;
-  bottom: 0;
+  bottom: -20px;
   right: 120px;
 }
 

@@ -113,7 +113,7 @@ const links = [
     href: "/become-a-seller",
   },
   {
-    name: "Contact",
+    name: "Contact Us",
     href: "/contact-us",
   },
 ];

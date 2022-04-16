@@ -25,6 +25,7 @@
   align-items: center;
   padding: 0;
   border: 1px solid #d4d5d9;
+  background-color: var(--white-color);
   margin-bottom: 25px;
 }
 
@@ -57,7 +58,6 @@
 
 .errorMessage {
   color: var(--error-color) !important;
-  margin-bottom: 10px !important;
 }
 
 .group {
@@ -67,4 +67,48 @@
 
 .group div {
   flex: 1;
+}
+
+.modalContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: grid;
+  place-items: center;
+  z-index: 999;
+}
+
+.modal {
+  width: 90vw;
+  max-width: 400px;
+  margin: auto;
+  background-color: var(--white-color);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal p {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.buttonContainer button {
+  margin-left: 15px;
+  padding: 12px 25px;
+  border: none;
+  background-color: var(--secondary-bg-color);
+  color: var(--white-color);
 }

@@ -2,10 +2,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 
 import { useState, useEffect, useContext } from "react";
+import { AppContext } from "../context/AppContext";
 import { useRouter } from "next/router";
 import axios from "../helpers/axios";
 import styles from "../styles/Profile.module.css";
-import { AppContext } from "../context/AppContext";
 
 export default function Profile() {
   const [user, setUser] = useState({});

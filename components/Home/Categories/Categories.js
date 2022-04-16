@@ -8,10 +8,7 @@ import styles from "./Categories.module.css";
 export default function Categories() {
   const router = useRouter();
   return (
-    <div
-      className={styles.categoriesContainer}
-      style={{ backgroundColor: router.pathname === "/shop" ? "#fdfdfd" : "#fff3ee" }}
-    >
+    <div className={styles.categoriesContainer}>
       <div className={styles.innerContainer}>
         <h2>Categories</h2>
         <div className={styles.categories}>

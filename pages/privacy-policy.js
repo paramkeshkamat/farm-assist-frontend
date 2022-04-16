@@ -1,13 +1,21 @@
 /** @format */
 
-import React from "react";
 import Banner from "../components/global/Banner/Banner";
+import { privacyPolicy } from "../data/privacyPolicy";
+import styles from "../styles/PrivacyPolicy.module.css";
 
-export default function privacyPolicy() {
+export default function PrivacyPolicy() {
   return (
     <div>
       <Banner title="Privacy Policy" />
-      <div></div>
+      <div className={styles.container}>
+        {privacyPolicy.map((data) => (
+          <div key={data.id}>
+            <h2>{data.title}</h2>
+            <p>{data.text}</p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

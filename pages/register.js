@@ -28,7 +28,7 @@ export default function Register() {
     e.preventDefault();
     setErrorMessage("");
     if (!name) {
-      setErrorMessage("Name is required!");
+      setErrorMessage("Full Name is required!");
     } else if (!email) {
       setErrorMessage("Email is required!");
     } else if (!emailRegex.test(email)) {
@@ -36,7 +36,7 @@ export default function Register() {
     } else if (!address) {
       setErrorMessage("Street Address is required!");
     } else if (!city) {
-      setErrorMessage("City is required!");
+      setErrorMessage("City/Town/District is required!");
     } else if (!state1) {
       setErrorMessage("State is required!");
     } else if (!pincode) {
