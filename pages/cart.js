@@ -6,12 +6,12 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import axios from "../helpers/axios";
 import styles from "../styles/Cart.module.css";
+import CartItems from "../components/Cart/CartItems/CartItems";
+import PriceDetails from "../components/Cart/PriceDetails/PriceDetails";
 
 export default function Cart() {
   const { state, setState } = useContext(AppContext);
   const router = useRouter();
-
-  console.log(state);
 
   if (!state.user) {
     return (
@@ -27,7 +27,7 @@ export default function Cart() {
 
   return (
     <div className={styles.cartContainer}>
-      {state.cart.length === 0 ? (
+      {state.cart?.length === 0 ? (
         <div className={styles.emptyCart}>
           <Image
             src="/illustrations/emptyCart.png"
@@ -39,7 +39,13 @@ export default function Cart() {
           <button onClick={() => router.push("/shop")}>Shop Now</button>
         </div>
       ) : (
-        <p>cart</p>
+        <div>
+          <h2>Cart</h2>
+          <div className={styles.cart}>
+            <CartItems />
+            <PriceDetails />
+          </div>
+        </div>
       )}
     </div>
   );

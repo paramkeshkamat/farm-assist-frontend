@@ -44,7 +44,7 @@ const Footer = () => {
         </div>
         <div className={styles.navLinks}>
           <div>
-            <Link href="/contact">
+            <Link href="/contact-us">
               <a>Contact Us</a>
             </Link>
           </div>

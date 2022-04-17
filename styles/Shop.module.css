@@ -1,0 +1,10 @@
+/** @format */
+
+.shopContainer {
+  width: 90vw;
+  margin: 130px auto 60px auto;
+  max-width: 1368px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}

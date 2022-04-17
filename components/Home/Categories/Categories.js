@@ -13,7 +13,16 @@ export default function Categories() {
         <h2>Categories</h2>
         <div className={styles.categories}>
           {categories.map((category) => (
-            <div key={category.id} className={styles.card}>
+            <div
+              key={category.id}
+              className={styles.card}
+              onClick={() =>
+                router.push({
+                  pathname: "/shop",
+                  query: { category: category.name.toLowerCase() },
+                })
+              }
+            >
               <Image src={category.image} alt={category.name} width={100} height={100} />
               <h3>{category.name}</h3>
             </div>

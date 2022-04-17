@@ -36,7 +36,7 @@ export default function Profile() {
 
   function handleLogout() {
     localStorage.removeItem("appstate");
-    setState({ ...state, user: null });
+    setState({ cart: [], user: null });
     router.push("/");
   }
 

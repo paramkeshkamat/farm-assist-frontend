@@ -1,0 +1,30 @@
+/** @format */
+
+.categoriesContainer {
+  margin-right: 50px;
+  flex: 2;
+}
+
+.categoriesContainer h2 {
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--primary-text-color);
+  margin-bottom: 20px;
+  padding: 0 10px;
+}
+
+.categoriesContainer p {
+  cursor: pointer;
+  text-transform: capitalize;
+  padding: 8px 10px;
+}
+
+.categoriesContainer p:hover {
+  background-color: var(--light-bg-color);
+}
+
+.active,
+.categoriesContainer .active:hover {
+  background-color: var(--secondary-bg-color);
+  color: var(--white-color);
+}

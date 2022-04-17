@@ -36,3 +36,13 @@
   margin-top: 20px;
   margin-bottom: 20px;
 }
+
+.cartContainer h2 {
+  color: var(--primary-text-color);
+  font-size: 30px;
+  margin-bottom: 35px;
+}
+
+.cart {
+  display: flex;
+}

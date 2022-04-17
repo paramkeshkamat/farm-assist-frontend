@@ -27,7 +27,7 @@ input {
 
   --light-bg-color: rgb(245, 245, 245);
   --secondary-light-bg-color: #fff3ee;
-  
+
   --active-link-color: #7ea310;
   --error-color: red;
 }
@@ -51,4 +51,9 @@ h1,
 h2,
 h3 {
   line-height: 150%;
+}
+
+button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed !important;
 }

@@ -1,5 +1,5 @@
 /** @format */
-import { useRef, useEffect, useState, useContext } from "react";
+import { useRef, useEffect, useState, useContext, memo } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { AppContext } from "../../../context/AppContext";
@@ -7,14 +7,22 @@ import { FaBars } from "react-icons/fa";
 import { RiUser3Fill, RiShoppingCart2Fill } from "react-icons/ri";
 import styles from "./Navbar.module.css";
 
-const pagesWithBoxshadow = ["/signin", "/register", "/cart", "/profile", "/*"];
+const pagesWithBoxshadow = [
+  "/signin",
+  "/register",
+  "/cart",
+  "/profile",
+  "/shop",
+  "/product/[id]",
+  "/404",
+];
 
-export default function Navbar() {
+export default memo(function Navbar() {
   const [showNavbar, setShowNavbar] = useState(false);
+  const { state } = useContext(AppContext);
   const navRef = useRef();
   const navlinksRef = useRef();
   const router = useRouter();
-  const { state } = useContext(AppContext);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -93,7 +101,7 @@ export default function Navbar() {
       </div>
     </nav>
   );
-}
+});
 
 const links = [
   {

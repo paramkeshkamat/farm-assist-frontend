@@ -1,0 +1,124 @@
+/** @format */
+
+.productContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 100px;
+  gap: 50px;
+}
+
+.leftContainer,
+.rightContainer {
+  flex: 1;
+}
+
+.leftContainer img {
+  width: 100%;
+  object-fit: cover;
+  height: 450px;
+}
+
+.rightContainer h2 {
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--primary-text-color);
+  margin-bottom: 20px;
+}
+
+.rightContainer p {
+  color: var(--secondary-text-color);
+  margin-bottom: 10px;
+}
+
+.rightContainer span {
+  font-weight: 600;
+  color: var(--primary-text-color);
+}
+
+.rightContainer button {
+  color: var(--white-color);
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+  padding: 12px 20px;
+  transform: perspective(1px) translateZ(0px);
+  transition: 0.3s;
+  vertical-align: middle;
+  background: var(--secondary-bg-color);
+  border-radius: 0;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 0.75px;
+  margin-top: 20px;
+}
+
+.quantityContainer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.quantityButtons {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.quantityButtons button {
+  margin-top: 0;
+  font-size: 20px;
+  padding: 8px;
+  display: grid;
+  place-items: center;
+}
+
+.quantityButtons p {
+  font-size: 18px;
+  margin: 0;
+  padding: 0 10px;
+}
+
+.modalContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: grid;
+  place-items: center;
+  z-index: 999;
+}
+
+.modal {
+  width: 90vw;
+  max-width: 400px;
+  margin: auto;
+  background-color: var(--white-color);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal p {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.buttonContainer button {
+  margin-left: 15px;
+  padding: 12px 25px;
+  border: none;
+  background-color: var(--secondary-bg-color);
+  color: var(--white-color);
+}

@@ -1,0 +1,45 @@
+/** @format */
+
+.priceDetailsCard {
+  width: 350px;
+  padding: 25px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.priceDetailsCard h2 {
+  margin-bottom: 10px;
+}
+
+.priceDetailsCard b {
+  color: var(--primary-text-color);
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.chekoutButton {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  background-color: var(--secondary-bg-color);
+  color: var(--white-color);
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  margin-top: 10px;
+}
+
+.upperDiv {
+  border-top: 1px solid #d4d5d9;
+  border-bottom: 1px solid #d4d5d9;
+}
+
+.bottomDiv {
+  border-bottom: 1px solid #d4d5d9;
+}

@@ -1,0 +1,54 @@
+/** @format */
+
+.itemCard {
+  display: flex;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  height: 150px;
+}
+
+.leftContainer img {
+  width: 200px;
+  height: 100%;
+  object-fit: cover;
+  margin-bottom: 0;
+}
+
+.centerContainer {
+  flex: 1;
+  padding: 10px 20px;
+}
+
+.rightContainer {
+  align-self: center;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.rightContainer button {
+  color: var(--white-color);
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+  transform: perspective(1px) translateZ(0px);
+  transition: 0.3s;
+  vertical-align: middle;
+  background: var(--secondary-bg-color);
+  border-radius: 0;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 0.75px;
+  font-size: 20px;
+  padding: 8px;
+  display: grid;
+  place-items: center;
+}
+
+.rightContainer p {
+  padding: 10px 0;
+}
+
+.removeButton {
+  color: red;
+  cursor: pointer;
+}
