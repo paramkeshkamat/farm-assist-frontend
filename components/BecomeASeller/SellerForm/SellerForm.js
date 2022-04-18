@@ -54,7 +54,7 @@ export default function SellerForm() {
           "state_changed",
           (snapshot) => {
             const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
-            console.log(progress);
+            // console.log(progress);
           },
           (err) => console.log(err.message),
           () => {
@@ -63,6 +63,16 @@ export default function SellerForm() {
               .child(image.name)
               .getDownloadURL()
               .then((url) => {
+                console.log({
+                  name,
+                  email,
+                  phoneNumber: "+91" + phoneNumber,
+                  address,
+                  city,
+                  state,
+                  pincode,
+                  profileImage: url,
+                });
                 axios
                   .post("/seller/create", {
                     name,
@@ -77,7 +87,12 @@ export default function SellerForm() {
                   .then(() => {
                     setShowSuccessModal(true);
                   })
-                  .catch((err) => console.log(err.message));
+                  .catch((err) => {
+                    if (err.response.status === 409) {
+                      setErrorMessage(err.response.data.error.message);
+                    }
+                    console.log(err.message);
+                  });
               })
               .catch((err) => console.log(err.message));
           },

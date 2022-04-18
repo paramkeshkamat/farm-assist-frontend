@@ -70,9 +70,8 @@ export default function Register() {
             }
           })
           .catch((err) => {
-            const statusCode = err.message.split(" ")[err.message.split(" ").length - 1];
-            if (statusCode === "409") {
-              setErrorMessage("User with this email already exists!");
+            if (err.response.status === 409) {
+              setErrorMessage(err.response.data.error.message);
             }
             console.log(err.message);
           });
