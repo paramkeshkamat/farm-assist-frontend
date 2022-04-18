@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import axios from "../../../helpers/axios";
+import { storage } from "../../../utils/firebase";
 import styles from "./SellerForm.module.css";
 
 const emailRegex = new RegExp("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,5}$");
@@ -16,6 +18,7 @@ export default function SellerForm() {
   const [state, setState] = useState("");
   const [pincode, setPincode] = useState("");
   const [profileImage, setProfileImage] = useState("");
+  const [image, setImage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
   const [showSuccessModal, setShowSuccessModal] = useState(false);
@@ -45,18 +48,41 @@ export default function SellerForm() {
     } else if (!pincodeRegex.test(pincode)) {
       setErrorMessage("Please enter a valid pincode!");
     } else {
-      const newObj = {
-        name,
-        email,
-        phoneNumber,
-        address,
-        city,
-        state,
-        pincode,
-        profileImage,
-      };
-      console.log(newObj);
-      setShowSuccessModal(true);
+      if (image) {
+        const uploadTask = storage.ref(`images/${image.name}`).put(image);
+        uploadTask.on(
+          "state_changed",
+          (snapshot) => {
+            const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+            console.log(progress);
+          },
+          (err) => console.log(err.message),
+          () => {
+            storage
+              .ref("images")
+              .child(image.name)
+              .getDownloadURL()
+              .then((url) => {
+                axios
+                  .post("/seller/create", {
+                    name,
+                    email,
+                    phoneNumber: "+91" + phoneNumber,
+                    address,
+                    city,
+                    state,
+                    pincode,
+                    profileImage: url,
+                  })
+                  .then(() => {
+                    setShowSuccessModal(true);
+                  })
+                  .catch((err) => console.log(err.message));
+              })
+              .catch((err) => console.log(err.message));
+          },
+        );
+      }
     }
   }
 
@@ -69,6 +95,7 @@ export default function SellerForm() {
     setState("");
     setPincode("");
     setProfileImage("");
+    setImage("");
   }
 
   return (
@@ -161,7 +188,12 @@ export default function SellerForm() {
           <div className={styles.inputField} style={{ marginTop: 5 }}>
             <input
               value={profileImage}
-              onChange={(e) => setProfileImage(e.target.value)}
+              onChange={(e) => {
+                setProfileImage(e.target.value);
+                if (e.target.files[0]) {
+                  setImage(e.target.files[0]);
+                }
+              }}
               type="file"
               placeholder="Profile Image*"
               accept="image/*"

@@ -1,16 +1,14 @@
 /** @format */
 
-import { useState, useEffect, useContext } from "react";
+import { useContext } from "react";
 import { AppContext } from "../context/AppContext";
 import { useRouter } from "next/router";
 import Image from "next/image";
-import axios from "../helpers/axios";
+import NonEmptyCart from "../components/Cart/NonEmptyCart/NonEmptyCart";
 import styles from "../styles/Cart.module.css";
-import CartItems from "../components/Cart/CartItems/CartItems";
-import PriceDetails from "../components/Cart/PriceDetails/PriceDetails";
 
 export default function Cart() {
-  const { state, setState } = useContext(AppContext);
+  const { state } = useContext(AppContext);
   const router = useRouter();
 
   if (!state.user) {
@@ -41,10 +39,7 @@ export default function Cart() {
       ) : (
         <div>
           <h2>Cart</h2>
-          <div className={styles.cart}>
-            <CartItems />
-            <PriceDetails />
-          </div>
+          <NonEmptyCart />
         </div>
       )}
     </div>

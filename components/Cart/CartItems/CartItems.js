@@ -1,23 +1,20 @@
 /** @format */
 
-import { useState, useEffect, memo } from "react";
+import { memo } from "react";
 import SingleCartItem from "../SingleCartItem/SingleCartItem";
 import styles from "./CartItems.module.css";
 
-export default memo(function CartItems() {
-  const [cart, setCart] = useState([]);
-
-  useEffect(() => {
-    const appstate = JSON.parse(localStorage.getItem("appstate"));
-    if (appstate) {
-      setCart(appstate.cart);
-    }
-  }, []);
-
+export default memo(function CartItems({ cartItems, setCartItems }) {
   return (
     <div className={styles.cartItemsContainer}>
-      {cart?.map((item, index) => (
-        <SingleCartItem key={item.id} {...item} setCart={setCart} index={index} />
+      {cartItems?.map((item, index) => (
+        <SingleCartItem
+          key={item._id}
+          {...item}
+          index={index}
+          cartItems={cartItems}
+          setCartItems={setCartItems}
+        />
       ))}
     </div>
   );

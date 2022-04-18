@@ -4,7 +4,13 @@
   width: 90vw;
   margin: auto;
   max-width: 1268px;
-  padding: 150px 0 70px 0;
+  padding: 140px 0 70px 0;
+}
+
+.cartContainer h2 {
+  color: var(--primary-text-color);
+  font-size: 30px;
+  margin-bottom: 25px;
 }
 
 .emptyCart {
@@ -33,16 +39,5 @@
   border-radius: 0;
   border: none;
   letter-spacing: 0.75px;
-  margin-top: 20px;
   margin-bottom: 20px;
-}
-
-.cartContainer h2 {
-  color: var(--primary-text-color);
-  font-size: 30px;
-  margin-bottom: 35px;
-}
-
-.cart {
-  display: flex;
 }

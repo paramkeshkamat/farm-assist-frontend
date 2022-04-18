@@ -1,34 +1,32 @@
 /** @format */
 /* eslint-disable @next/next/no-img-element */
 
-import { useEffect, useState, useContext, memo } from "react";
+import { useContext, memo } from "react";
 import { AppContext } from "../../../context/AppContext";
-import axios from "../../../helpers/axios";
+// import axios from "../../../helpers/axios";
 import { IoAddSharp, IoRemoveSharp } from "react-icons/io5";
 import styles from "./SingleCartItem.module.css";
 
-export default memo(function SingleCartItem({ id, quantity, setCart, index }) {
-  const [item, setItem] = useState({});
+export default memo(function SingleCartItem({
+  _id,
+  productImage,
+  productName,
+  productPrice,
+  measurement,
+  quantity,
+  cartItems,
+  setCartItems,
+  index,
+}) {
   const { state, setState } = useContext(AppContext);
 
-  useEffect(() => {
-    async function fetchItem() {
-      try {
-        const { data } = await axios.get(`/api/products/${id}`);
-        setItem(data);
-      } catch (err) {
-        console.log(err.message);
-      }
-    }
-    fetchItem();
-  }, [id]);
-
   function removeItem() {
-    const updatedCart = state.cart.filter((item) => item.id !== id);
-    setCart(updatedCart);
+    const updatedCartState = state.cart.filter((item) => item.id !== _id);
+    const updatedCartItems = cartItems.filter((item) => item._id !== _id);
+    setCartItems(updatedCartItems);
     const updatedState = {
       ...state,
-      cart: updatedCart,
+      cart: updatedCartState,
     };
     setState(updatedState);
     localStorage.setItem("appstate", JSON.stringify(updatedState));
@@ -36,7 +34,7 @@ export default memo(function SingleCartItem({ id, quantity, setCart, index }) {
 
   function increaseQuantity() {
     const updatedCart = state.cart.map((item) => {
-      if (item.id === id) {
+      if (item.id === _id) {
         return {
           ...item,
           quantity: item.quantity + 1,
@@ -52,7 +50,7 @@ export default memo(function SingleCartItem({ id, quantity, setCart, index }) {
 
   function decreaseQuantity() {
     const updatedCart = state.cart.map((item) => {
-      if (item.id === id) {
+      if (item.id === _id) {
         return {
           ...item,
           quantity: item.quantity - 1,
@@ -69,19 +67,19 @@ export default memo(function SingleCartItem({ id, quantity, setCart, index }) {
   return (
     <div className={styles.itemCard}>
       <div className={styles.leftContainer}>
-        <img src={item.productImage} alt={item.productname} />
+        <img src={productImage} alt={productName} />
       </div>
       <div className={styles.centerContainer}>
-        <h3>{item.productName}</h3>
+        <h3>{productName}</h3>
         <p>
-          ₹{item.productPrice} per {item.measurement}
+          ₹{productPrice} per {measurement}
         </p>
-        <p className={styles.removeButton} onClick={removeItem}>
+        <button className={styles.removeButton} onClick={removeItem}>
           Remove
-        </p>
+        </button>
       </div>
       <div className={styles.rightContainer}>
-        <button disabled={state.cart[index].quantity === item.quantity} onClick={increaseQuantity}>
+        <button disabled={state.cart[index].quantity === quantity} onClick={increaseQuantity}>
           <IoAddSharp />
         </button>
         <p>{state.cart[index].quantity}</p>
