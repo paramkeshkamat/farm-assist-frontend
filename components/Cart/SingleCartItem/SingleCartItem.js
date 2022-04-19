@@ -33,6 +33,7 @@ export default memo(function SingleCartItem({
   }
 
   function increaseQuantity() {
+    sessionStorage.removeItem("totalPrice");
     const updatedCart = state.cart.map((item) => {
       if (item.id === _id) {
         return {
@@ -49,6 +50,7 @@ export default memo(function SingleCartItem({
   }
 
   function decreaseQuantity() {
+    sessionStorage.removeItem("totalPrice");
     const updatedCart = state.cart.map((item) => {
       if (item.id === _id) {
         return {

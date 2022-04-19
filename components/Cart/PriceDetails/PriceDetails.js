@@ -2,12 +2,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 
 import { useState, useEffect, useContext, memo } from "react";
+import { useRouter } from "next/router";
 import { AppContext } from "../../../context/AppContext";
 import styles from "./PriceDetails.module.css";
 
 export default memo(function PriceDetails({ cartItems }) {
   const [price, setPrice] = useState(0);
   const { state } = useContext(AppContext);
+  const router = useRouter();
 
   function calculateTotalPrice() {
     let totalPrice = 0;
@@ -42,7 +44,15 @@ export default memo(function PriceDetails({ cartItems }) {
           <b>Total Amount</b> <p>₹{price}</p>
         </div>
       </div>
-      <button className={styles.chekoutButton}>Proceed to Checkout</button>
+      <button
+        className={styles.chekoutButton}
+        onClick={() => {
+          sessionStorage.setItem("totalPrice", price);
+          router.push("/checkout");
+        }}
+      >
+        Proceed to Checkout
+      </button>
     </div>
   );
 });

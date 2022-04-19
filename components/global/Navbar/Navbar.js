@@ -15,6 +15,7 @@ const pagesWithBoxshadow = [
   "/shop",
   "/product/[id]",
   "/404",
+  "/checkout",
 ];
 
 export default memo(function Navbar() {

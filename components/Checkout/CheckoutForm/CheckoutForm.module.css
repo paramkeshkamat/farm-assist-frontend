@@ -1,0 +1,93 @@
+/** @format */
+
+.innerContainer {
+  background-color: var(--white-color);
+  padding: 30px;
+  width: 90vw;
+  margin: auto;
+  max-width: 888px;
+  /* box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px; */
+}
+
+.innerContainer h1 {
+  font-size: 25px;
+  font-weight: 500;
+  margin-bottom: 24px;
+}
+
+.inputField {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0;
+  border: 1px solid #d4d5d9;
+  margin-bottom: 25px;
+  width: 100%;
+  margin-top: 5px;
+}
+
+.inputWrapper {
+  width: 100%;
+}
+
+.innerContainer input {
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 10px 15px;
+  font-size: 15px;
+}
+
+.innerContainer button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  background-color: var(--secondary-bg-color);
+  color: var(--white-color);
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.errorMessage {
+  color: var(--error-color) !important;
+  margin-bottom: 10px !important;
+}
+
+.group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.radioButtonContainer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 50px;
+  margin-bottom: 25px;
+  margin-top: 10px;
+}
+
+.radioButtonContainer label {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.radioButtonContainer input {
+  display: inline;
+  width: auto;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.price {
+  margin-bottom: 25px;
+  font-weight: 500;
+}
+
+.price p {
+  font-size: 20px;
+}
