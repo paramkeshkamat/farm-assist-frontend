@@ -63,21 +63,11 @@ export default function SellerForm() {
               .child(image.name)
               .getDownloadURL()
               .then((url) => {
-                console.log({
-                  name,
-                  email,
-                  phoneNumber: "+91" + phoneNumber,
-                  address,
-                  city,
-                  state,
-                  pincode,
-                  profileImage: url,
-                });
                 axios
                   .post("/seller/create", {
                     name,
                     email,
-                    phoneNumber: "+91" + phoneNumber,
+                    phoneNumber: "+91 " + phoneNumber,
                     address,
                     city,
                     state,

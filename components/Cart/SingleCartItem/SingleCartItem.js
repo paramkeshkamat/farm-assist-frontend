@@ -3,7 +3,6 @@
 
 import { useContext, memo } from "react";
 import { AppContext } from "../../../context/AppContext";
-// import axios from "../../../helpers/axios";
 import { IoAddSharp, IoRemoveSharp } from "react-icons/io5";
 import styles from "./SingleCartItem.module.css";
 

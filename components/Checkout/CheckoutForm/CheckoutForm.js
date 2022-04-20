@@ -1,6 +1,6 @@
 /** @format */
 
-import { useState } from "react";
+import { useState, memo } from "react";
 import axios from "../../../helpers/axios";
 import SuccessModal from "../SuccessModal/SuccessModal";
 import styles from "./CheckoutForm.module.css";
@@ -8,10 +8,10 @@ import styles from "./CheckoutForm.module.css";
 const emailRegex = new RegExp("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,5}$");
 const pincodeRegex = new RegExp("^[1-9][0-9]{5}$");
 
-export default function CheckoutForm({ userDetails, price }) {
+export default memo(function CheckoutForm({ userDetails, price }) {
   const [name, setName] = useState(userDetails.name);
   const [email, setEmail] = useState(userDetails.email);
-  const [phoneNumber, setPhoneNumber] = useState(userDetails.phoneNumber);
+  const [phoneNumber, setPhoneNumber] = useState(userDetails.phoneNumber.slice(4));
   const [address, setAddress] = useState(userDetails.address);
   const [city, setCity] = useState(userDetails.city);
   const [state1, SetState1] = useState(userDetails.state);
@@ -42,10 +42,9 @@ export default function CheckoutForm({ userDetails, price }) {
       return;
     }
     const { data } = await axios.post("/api/razorpay", { price });
-    console.log(data);
 
     var options = {
-      key: "rzp_test_8EuNLe8dKOIYwT", // Enter the Key ID generated from the Dashboard
+      key: "rzp_test_8EuNLe8dKOIYwT",
       name: "Farm Assist",
       currency: data.currency,
       amount: data.amount,
@@ -208,4 +207,4 @@ export default function CheckoutForm({ userDetails, price }) {
       </div>
     </>
   );
-}
+});

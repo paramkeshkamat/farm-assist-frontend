@@ -1,7 +1,8 @@
 /** @format */
 
-import { useState, useEffect, memo } from "react";
+import { useState, useEffect, useContext, memo } from "react";
 import axios from "axios";
+import { AppContext } from "../../../context/AppContext";
 import axiosL from "../../../helpers/axios";
 import CartItems from "../CartItems/CartItems";
 import PriceDetails from "../PriceDetails/PriceDetails";
@@ -9,11 +10,12 @@ import styles from "./NonEmptyCart.module.css";
 
 export default memo(function NonEmptyCart() {
   const [cartItems, setCartItems] = useState([]);
+  const { state } = useContext(AppContext);
 
   useEffect(() => {
-    function fetchCartItems(c) {
+    function fetchCartItems() {
       axios
-        .all(c.map((item) => axiosL.get(`/api/products/${item.id}`)))
+        .all(state.cart.map((item) => axiosL.get(`/api/products/${item.id}`)))
         .then(
           axios.spread((...responses) => {
             const tempCart = responses.map((c) => c.data);
@@ -22,11 +24,12 @@ export default memo(function NonEmptyCart() {
         )
         .catch((err) => console.log(err.message));
     }
-    const appstate = JSON.parse(localStorage.getItem("appstate"));
-    if (appstate) {
-      fetchCartItems(appstate.cart);
+    if (state.user !== null) {
+      if (state.cart?.length > 0) {
+        fetchCartItems();
+      }
     }
-  }, []);
+  }, [state.cart, state.user]);
 
   return (
     <div className={styles.cart}>

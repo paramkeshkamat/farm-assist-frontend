@@ -1,10 +1,11 @@
 /** @format */
 
+import { memo } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import styles from "./SuccessModal.module.css";
 
-export default function SuccessModal({ setShowSuccessModal }) {
+export default memo(function SuccessModal({ setShowSuccessModal }) {
   const router = useRouter();
   return (
     <div className={styles.modalContainer}>
@@ -15,7 +16,7 @@ export default function SuccessModal({ setShowSuccessModal }) {
           <button
             onClick={() => {
               setShowSuccessModal(false);
-              sessionStorage.removeItem("totalPrice")
+              sessionStorage.removeItem("totalPrice");
               router.push("/");
             }}
           >
@@ -25,4 +26,4 @@ export default function SuccessModal({ setShowSuccessModal }) {
       </div>
     </div>
   );
-}
+});
