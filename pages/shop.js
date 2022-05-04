@@ -11,11 +11,6 @@ const allCategories = ["all", "vegetables", "fruits", "grains", "pulses", "dairy
 
 export async function getStaticProps() {
   const { data } = await axios.get("/api/products");
-  if (!data) {
-    return {
-      notFound: true,
-    };
-  }
   return {
     props: { data },
     revalidate: 10,
