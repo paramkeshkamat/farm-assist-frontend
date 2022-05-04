@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Loader from "../../global/Loader/Loader";
 import axios from "../../../helpers/axios";
 import { storage } from "../../../utils/firebase";
 import styles from "./SellerForm.module.css";
@@ -21,73 +22,99 @@ export default function SellerForm() {
   const [image, setImage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
+  const [isLoading, setIsLoading] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
 
   function handleSubmit(e) {
     e.preventDefault();
     setErrorMessage("");
 
-    if (!name) {
-      setErrorMessage("Full Name is required!");
-    } else if (!email) {
-      setErrorMessage("Email is required!");
-    } else if (!emailRegex.test(email)) {
-      setErrorMessage("Please enter a valid email!");
-    } else if (!phoneNumber) {
-      setErrorMessage("Phone Number is required!");
-    } else if (phoneNumber.length < 10) {
-      setErrorMessage("Please enter a valid mobile number (10 digits)");
-    } else if (!address) {
-      setErrorMessage("Street Address is required!");
-    } else if (!city) {
-      setErrorMessage("City/Town/District is required!");
-    } else if (!state) {
-      setErrorMessage("State is required!");
-    } else if (!pincode) {
-      setErrorMessage("Pin Code is required!");
-    } else if (!pincodeRegex.test(pincode)) {
-      setErrorMessage("Please enter a valid pincode!");
-    } else {
-      if (image) {
-        const uploadTask = storage.ref(`images/${image.name}`).put(image);
-        uploadTask.on(
-          "state_changed",
-          (snapshot) => {
-            const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
-            // console.log(progress);
-          },
-          (err) => console.log(err.message),
-          () => {
-            storage
-              .ref("images")
-              .child(image.name)
-              .getDownloadURL()
-              .then((url) => {
-                axios
-                  .post("/seller/create", {
-                    name,
-                    email,
-                    phoneNumber: "+91 " + phoneNumber,
-                    address,
-                    city,
-                    state,
-                    pincode,
-                    profileImage: url,
-                  })
-                  .then(() => {
-                    setShowSuccessModal(true);
-                  })
-                  .catch((err) => {
-                    if (err.response.status === 409) {
-                      setErrorMessage(err.response.data.error.message);
-                    }
-                    console.log(err.message);
-                  });
-              })
-              .catch((err) => console.log(err.message));
-          },
-        );
+    try {
+      setIsLoading(true);
+      if (!name) {
+        setErrorMessage("Full Name is required!");
+        setIsLoading(false);
+      } else if (!email) {
+        setErrorMessage("Email is required!");
+        setIsLoading(false);
+      } else if (!emailRegex.test(email)) {
+        setErrorMessage("Please enter a valid email!");
+        setIsLoading(false);
+      } else if (!phoneNumber) {
+        setErrorMessage("Phone Number is required!");
+        setIsLoading(false);
+      } else if (phoneNumber.length < 10) {
+        setErrorMessage("Please enter a valid mobile number (10 digits)");
+        setIsLoading(false);
+      } else if (!address) {
+        setErrorMessage("Street Address is required!");
+        setIsLoading(false);
+      } else if (!city) {
+        setErrorMessage("City/Town/District is required!");
+        setIsLoading(false);
+      } else if (!state) {
+        setErrorMessage("State is required!");
+        setIsLoading(false);
+      } else if (!pincode) {
+        setErrorMessage("Pin Code is required!");
+        setIsLoading(false);
+      } else if (!pincodeRegex.test(pincode)) {
+        setErrorMessage("Please enter a valid pincode!");
+        setIsLoading(false);
+      } else if (!profileImage) {
+        setErrorMessage("Please add a profile image!");
+        setIsLoading(false);
       }
+      {
+        if (image) {
+          const uploadTask = storage.ref(`images/${image.name}`).put(image);
+          uploadTask.on(
+            "state_changed",
+            (snapshot) => {
+              const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+              // console.log(progress);
+            },
+            (err) => console.log(err.message),
+            () => {
+              storage
+                .ref("images")
+                .child(image.name)
+                .getDownloadURL()
+                .then((url) => {
+                  axios
+                    .post("/seller/create", {
+                      name,
+                      email,
+                      phoneNumber: "+91 " + phoneNumber,
+                      address,
+                      city,
+                      state,
+                      pincode,
+                      profileImage: url,
+                    })
+                    .then(() => {
+                      setIsLoading(false);
+                      setShowSuccessModal(true);
+                    })
+                    .catch((err) => {
+                      if (err.response.status === 409) {
+                        setErrorMessage(err.response.data.error.message);
+                      }
+                      console.log(err.message);
+                      setIsLoading(false);
+                    });
+                })
+                .catch((err) => {
+                  console.log(err.message);
+                  setIsLoading(false);
+                });
+            },
+          );
+        }
+      }
+    } catch (err) {
+      console.log(err.message);
+      setIsLoading(false);
     }
   }
 
@@ -105,6 +132,9 @@ export default function SellerForm() {
 
   return (
     <>
+      {/* Loader */}
+      {isLoading && <Loader />}
+
       {/* Modal */}
       {showSuccessModal && (
         <div className={styles.modalContainer}>

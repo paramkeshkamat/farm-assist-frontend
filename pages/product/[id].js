@@ -31,13 +31,7 @@ export default memo(function SingleProduct({ product }) {
   useEffect(() => {
     const getSeller = async () => {
       try {
-        const { data } = await axios.get(`/user/get-user/${product.sellerId}`, {
-          headers: {
-            Authorization:
-              "Bearer " +
-              "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNzA1ZTg5M2Q2NjVjYzUzNjBjOTU1ZiIsImlhdCI6MTYzNDc1NDE4NX0.55JOLBj_wNmdlbwtsgIx-whxoZXBFwQ9XJt5wvgUEdY",
-          },
-        });
+        const { data } = await axios.get(`/seller-by-id/${product.sellerId}`);
         setSeller(data);
       } catch (err) {
         console.log(err.message);
@@ -53,7 +47,7 @@ export default memo(function SingleProduct({ product }) {
         console.log(err.message);
       }
     };
-    // getSeller();
+    getSeller();
     getRelatedProducts();
   }, []);
 

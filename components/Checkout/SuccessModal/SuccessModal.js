@@ -1,12 +1,14 @@
 /** @format */
 
-import { memo } from "react";
+import { memo, useContext } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { AppContext } from "../../../context/AppContext";
 import styles from "./SuccessModal.module.css";
 
 export default memo(function SuccessModal({ setShowSuccessModal }) {
   const router = useRouter();
+  const { state, setState } = useContext(AppContext);
   return (
     <div className={styles.modalContainer}>
       <div className={styles.modal}>
@@ -15,6 +17,12 @@ export default memo(function SuccessModal({ setShowSuccessModal }) {
         <div className={styles.buttonContainer}>
           <button
             onClick={() => {
+              const updatedState = {
+                ...state,
+                cart: [],
+              };
+              localStorage.setItem("appstate", JSON.stringify(updatedState));
+              setState(updatedState);
               setShowSuccessModal(false);
               sessionStorage.removeItem("totalPrice");
               router.push("/");

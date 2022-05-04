@@ -53,7 +53,8 @@ export default memo(function CheckoutForm({ userDetails, price }) {
       image: "",
       handler: function (response) {
         console.log(response);
-        alert("Payed money by razor pay");
+        // alert("Payed money by razor pay");
+        setShowSuccessModal(true);
       },
       prefill: {},
     };
@@ -85,7 +86,7 @@ export default memo(function CheckoutForm({ userDetails, price }) {
       if (paymentMethod === "Online Payment") {
         makePayment();
       } else {
-        alert("Pay on Delivery");
+        setShowSuccessModal(true);
       }
     }
   }

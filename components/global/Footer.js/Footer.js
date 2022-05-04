@@ -15,10 +15,7 @@ const Footer = () => {
               </h3>
             </a>
           </Link>
-          <p>
-            Lorem ipsum dolor amet cons adipisicing elit sed do eiusmod tempor incididunt ut labore
-            et dolore magna aliqua.
-          </p>
+          <p>A Shop where you can buy groceries fresh and healthy directly from farmers</p>
         </div>
         <div className={styles.navLinks}>
           <div>

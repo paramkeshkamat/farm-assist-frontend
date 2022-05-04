@@ -65,13 +65,13 @@ export default memo(function Product({ product, seller }) {
         <div className={styles.rightContainer}>
           <h2>{product.productName}</h2>
           <p>
-            <span>Seller Name: </span> {seller.name}
+            <span>Seller Name: </span> {seller.name || "FarmAssist User"}
           </p>
           <p>
-            <span>Seller Contact Number: </span> {seller.name}
+            <span>Seller Contact Number: </span> {seller.phoneNumber || "+91 9989899889"}
           </p>
           <p>
-            <span>Location: </span> {seller.city}, {seller.state}
+            <span>Location: </span> {seller.city || "Mumbai"}, {seller.state || "Maharashtra"}
           </p>
           <p>
             <span>Category: </span> {product.productCategory}
